@@ -41,4 +41,7 @@ start();
 !!! НЕ сделан ErrorHandler 32:36
 
 STOP - 41: 20 DeviceController
+
+"build": "rimraf ./build && npx tsc",
+
 */
