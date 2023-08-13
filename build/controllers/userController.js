@@ -98,6 +98,7 @@ class UserController {
       cookie.serialize('refreshToken', refreshToken || '', {
         httpOnly: true,
         maxAge: 1000 * 60 * 60, //??? refreshTokenAge
+        sameSite: 'none',
       })
     );
     res.send({ accessToken });
