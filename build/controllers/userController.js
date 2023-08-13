@@ -82,7 +82,7 @@ class UserController {
         //   maxAge: utils_1.refreshTokenAge,
         //   sameSite: 'none',
         // })
-        res.cookie('refreshToken', refreshToken, {
+        cookie.serialize('refreshToken', refreshToken, {
           secure,
           httpOnly: true,
           sameSite: secure ? 'None' : 'Lax',
@@ -106,7 +106,7 @@ class UserController {
       //     maxAge: 1000 * 60 * 60, //??? refreshTokenAge
       //     sameSite: 'none',
       //   })
-      res.cookie('refreshToken', refreshToken, {
+      cookie.serialize('refreshToken', refreshToken, {
         secure,
         httpOnly: true,
         sameSite: secure ? 'None' : 'Lax',
