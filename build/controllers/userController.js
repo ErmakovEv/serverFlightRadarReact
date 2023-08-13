@@ -69,9 +69,12 @@ class UserController {
                 email: user.email,
                 role: user.role,
             });
+            const { secure } = req;
             res.setHeader('Set-Cookie', cookie.serialize('refreshToken', refreshToken, {
+                secure,
                 httpOnly: true,
-                maxAge: utils_1.refreshTokenAge, //1000 * 60 * 60 -?
+                maxAge: utils_1.refreshTokenAge,
+                sameSite: secure ? 'none' : 'lax',
             }));
             res.send({ accessToken });
         }

@@ -76,11 +76,14 @@ class UserController {
         email: user.email,
         role: user.role,
       });
+      const { secure } = req;
       res.setHeader(
         'Set-Cookie',
         cookie.serialize('refreshToken', refreshToken, {
+          secure,
           httpOnly: true,
           maxAge: refreshTokenAge, //1000 * 60 * 60 -?
+          sameSite: secure ? 'none' : 'lax',
         })
       );
       res.send({ accessToken });
