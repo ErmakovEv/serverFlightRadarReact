@@ -77,10 +77,15 @@ class UserController {
       const { secure } = req;
       res.setHeader(
         'Set-Cookie',
-        cookie.serialize('refreshToken', refreshToken, {
+        // cookie.serialize('refreshToken', refreshToken, {
+        //   httpOnly: true,
+        //   maxAge: utils_1.refreshTokenAge,
+        //   sameSite: 'none',
+        // })
+        res.cookie('refreshToken', refreshToken, {
+          secure,
           httpOnly: true,
-          maxAge: utils_1.refreshTokenAge,
-          sameSite: 'none',
+          sameSite: secure ? 'None' : 'Lax',
         })
       );
       res.send({ accessToken });
@@ -93,12 +98,18 @@ class UserController {
       typeof req.user === 'object'
         ? (0, utils_1.getTokens)(req.user)
         : { accessToken: null, refreshToken: null };
+    const { secure } = req;
     res.setHeader(
       'Set-Cookie',
-      cookie.serialize('refreshToken', refreshToken || '', {
+      //   cookie.serialize('refreshToken', refreshToken || '', {
+      //     httpOnly: true,
+      //     maxAge: 1000 * 60 * 60, //??? refreshTokenAge
+      //     sameSite: 'none',
+      //   })
+      res.cookie('refreshToken', refreshToken, {
+        secure,
         httpOnly: true,
-        maxAge: 1000 * 60 * 60, //??? refreshTokenAge
-        sameSite: 'none',
+        sameSite: secure ? 'None' : 'Lax',
       })
     );
     res.send({ accessToken });
