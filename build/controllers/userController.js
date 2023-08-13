@@ -84,7 +84,7 @@ class UserController {
         // })
         cookie.serialize('refreshToken', refreshToken, {
           secure: true,
-          httpOnly: true,
+          //   httpOnly: true,
           sameSite: 'none',
         })
       );
@@ -108,7 +108,7 @@ class UserController {
       //   })
       cookie.serialize('refreshToken', refreshToken, {
         secure: true,
-        httpOnly: true,
+        // httpOnly: true,
         sameSite: 'none',
       })
     );
