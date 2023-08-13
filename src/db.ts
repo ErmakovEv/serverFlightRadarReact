@@ -2,5 +2,5 @@ import { Sequelize } from 'sequelize';
 import constans from './constans';
 
 export default new Sequelize(
-  'postgres://admin:JmzYeKRACcOJCeP3pQK1PDWqzycPBZPu@dpg-cjbsp07db61s73ersbl0-a.oregon-postgres.render.com/dbname_4sy3'
+  'postgres://admin:4OTwdMv1TY6c0b9Ib8bKAtSmXrhhlfYC@dpg-cjcdiu45kgrc73amtgng-a.oregon-postgres.render.com/db_fr?ssl=true'
 );
