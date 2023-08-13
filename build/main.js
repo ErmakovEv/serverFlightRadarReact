@@ -15,7 +15,7 @@ const app = express();
 app.use(cookieParser());
 app.use(
   cors({
-    origin: 'https://flightradarclone.onrender.com/',
+    origin: 'https://flightradarclone.onrender.com',
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization', 'cookie'],
   })
