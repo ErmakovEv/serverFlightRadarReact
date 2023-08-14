@@ -5,9 +5,9 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "npx nodemon",
+    "dev": "NODE_ENV=development && npx nodemon",
     "build": "npx rimraf ./build && npx tsc",
-    "start": "node ./build/main.js",
+    "start": "NODE_ENV=production && node ./build/main.js",
     "lint": "npx eslint ./src",
     "format": "npx eslint ./src --fix"
   },
@@ -39,7 +39,7 @@
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "D": "^1.0.0",
-    "dotenv": "^16.0.3",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-fileupload": "^1.4.0",
     "express-http-proxy": "^1.6.3",

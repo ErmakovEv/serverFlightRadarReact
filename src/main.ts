@@ -8,18 +8,19 @@ import cookieParser = require('cookie-parser');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const models = require('./models/models'); //???
 import router from './routes/router';
+import 'dotenv/config';
 
 const PORT = constans.PORT;
 const app = express();
 app.use(cookieParser());
 app.use(
   cors({
-    origin: 'https://flightradarclone.onrender.com',
+    origin: process.env.HOST,
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization', 'cookie'],
   })
 );
-
+console.log(process.env.HOST);
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, 'static')));
 app.use(fileupload());

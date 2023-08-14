@@ -81,7 +81,7 @@ class UserController {
         'Set-Cookie',
         cookie.serialize('refreshToken', refreshToken, {
           secure: true,
-          // httpOnly: true,
+          httpOnly: true,
           sameSite: 'none',
         })
       );
@@ -100,7 +100,7 @@ class UserController {
       'Set-Cookie',
       cookie.serialize('refreshToken', refreshToken || '', {
         secure: true,
-        // httpOnly: true,
+        httpOnly: true,
         sameSite: 'none',
       })
     );
