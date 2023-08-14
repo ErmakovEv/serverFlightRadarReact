@@ -80,10 +80,9 @@ class UserController {
       res.setHeader(
         'Set-Cookie',
         cookie.serialize('refreshToken', refreshToken, {
-          secure,
-          httpOnly: true,
-          maxAge: refreshTokenAge, //1000 * 60 * 60 -?
-          sameSite: secure ? 'none' : 'lax',
+          secure: true,
+          // httpOnly: true,
+          sameSite: 'none',
         })
       );
       res.send({ accessToken });
@@ -100,8 +99,9 @@ class UserController {
     res.setHeader(
       'Set-Cookie',
       cookie.serialize('refreshToken', refreshToken || '', {
-        httpOnly: true,
-        maxAge: 1000 * 60 * 60, //??? refreshTokenAge
+        secure: true,
+        // httpOnly: true,
+        sameSite: 'none',
       })
     );
     res.send({ accessToken });
