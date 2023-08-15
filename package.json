@@ -5,9 +5,9 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "NODE_ENV=development && npx nodemon",
+    "dev": "NODE_ENV=development npx nodemon",
     "build": "npx rimraf ./build && npx tsc",
-    "start": "NODE_ENV=production && node ./build/main.js",
+    "start": "NODE_ENV=production node ./build/main.js",
     "lint": "npx eslint ./src",
     "format": "npx eslint ./src --fix"
   },

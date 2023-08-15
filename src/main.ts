@@ -5,10 +5,11 @@ import sequelize from './db';
 import cors = require('cors');
 import fileupload = require('express-fileupload');
 import cookieParser = require('cookie-parser');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const models = require('./models/models'); //???
 import router from './routes/router';
-import 'dotenv/config';
+import * as dotenv from 'dotenv';
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+console.log('http://127.0.0.1:5173');
+console.log(process.env.NODE_ENV);
 
 const PORT = constans.PORT;
 const app = express();
@@ -20,7 +21,6 @@ app.use(
     allowedHeaders: ['Content-Type', 'Authorization', 'cookie'],
   })
 );
-console.log(process.env.HOST);
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, 'static')));
 app.use(fileupload());

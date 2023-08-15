@@ -6,6 +6,12 @@ import constans from '../constans';
 import cookie = require('cookie');
 import { getTokens, refreshTokenAge } from '../utils/utils';
 import { IGetUserAuthInfoRequest } from '../utils/utils';
+import * as dotenv from 'dotenv';
+
+let http = true;
+if (process.env.NODE_ENV === 'production') {
+  http = false;
+}
 
 function generateJwt(id: number, email: string, role: string) {
   return jwt.sign({ id, email, role }, constans.SECRET_KEY, {
@@ -81,8 +87,9 @@ class UserController {
         'Set-Cookie',
         cookie.serialize('refreshToken', refreshToken, {
           secure: true,
-          httpOnly: true,
+          httpOnly: http,
           sameSite: 'none',
+          maxAge: refreshTokenAge,
         })
       );
       res.send({ accessToken });
@@ -100,8 +107,9 @@ class UserController {
       'Set-Cookie',
       cookie.serialize('refreshToken', refreshToken || '', {
         secure: true,
-        httpOnly: true,
+        httpOnly: http,
         sameSite: 'none',
+        maxAge: refreshTokenAge,
       })
     );
     res.send({ accessToken });
